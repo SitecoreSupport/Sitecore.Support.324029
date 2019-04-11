@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Web.Mvc.Ajax;
 
-namespace Sitecore.Support
+namespace Sitecore.Support.ExperienceForms.Mvc.Pipelines.RenderForm
 {
   public class InitializeAjaxOptions : MvcPipelineProcessor<RenderFormEventArgs>
   {
@@ -42,6 +42,7 @@ namespace Sitecore.Support
         {
           args.QueryString.Add("fxb.FormItemId", args.ViewModel.ItemId.ToGuid());
           args.QueryString.Add("fxb.HtmlPrefix", _formRenderingContext.Prefix.Trim('.'));
+          args.QueryString.Add("sc_site", Sitecore.Context.Site.Name);
         }
         args.RouteName = "FormBuilder";
       }
